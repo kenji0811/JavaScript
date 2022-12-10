@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body{
+      width: 860px;
+      text-align: center;
+    }
+    li{
+      list-style-type: none;
+      margin: 2px;
+      padding: 5px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #000000;
+    }
+    li{
+      float: left;
+    }
+    #li3,#li6{
+      clear: left;
+    }
+
+  </style>
+
+</head>
+<body onload="setup()">
+
+  <script>
+    gtli = document.getElementsByTagName("li")
+
+    function setup(){
+      var ul = document.createElement("ul")
+      ul.setAttribute("id","id_ul")
+      document.body.appendChild(ul)
+
+      for(i=0; i < 9; i++){
+      var li = document.createElement("li")
+      li.setAttribute("id","li"+i)
+      document.getElementById("id_ul").appendChild(li)
+      }
+
+      for(i=0; i < document.getElementsByTagName('ul')[0].childElementCount; i++){
+          gtli[i].addEventListener(
+            "click",
+            {
+              number : i,
+              handleEvent :function(event){
+                a = this.number
+                dotAppealcenter(a)
+                }
+              }
+            )
+          }
+        }
+
+    function dotAppealcenter(){
+        if(gtli[a].textContent != "●"){
+           gtli[a].textContent = "●"
+           dotAppealRook(a)
+        }else{
+           gtli[a].textContent = ""
+           dotAppealBishop(a)
+         }
+        }
+
+        function dotAppealRook(){
+          if(a-3 >= 0){
+            if(gtli[a-3].textContent != "●"){
+              gtli[a-3].textContent = "●"
+            }else{
+              gtli[a-3].textContent = ""
+            }
+          }
+          if(a != 2 && a != 5 && a+1 <= 8){
+            if(gtli[a+1].textContent != "●"){
+              gtli[a+1].textContent = "●"
+            }else{
+              gtli[a+1].textContent = ""
+            }
+          }
+          if(a+3 <= 8){ 
+            if(gtli[a+3].textContent != "●"){
+              gtli[a+3].textContent = "●"
+            }else{
+              gtli[a+3].textContent = ""
+            }
+          }
+          if(a != 3 && a != 6 && a-1 >= 0){
+            if(gtli[a-1].textContent != "●"){
+              gtli[a-1].textContent = "●"
+            }else{
+              gtli[a-1].textContent = ""
+            }
+          }
+        }
+
+        function dotAppealBishop(){
+          if(a != 6 && a-4 >= 0){
+            if(gtli[a-4].textContent != ""){
+              gtli[a-4].textContent = ""
+            }else{
+              gtli[a-4].textContent = "●"
+            }
+          }
+          if(a != 0 && a != 3 && a != 6 && a+2 <= 8){
+            if(gtli[a+2].textContent != ""){
+              gtli[a+2].textContent = ""
+            }else{
+              gtli[a+2].textContent = "●"
+            }
+          }
+          if(a != 2 && a+4 <= 8){ 
+            if(gtli[a+4].textContent != ""){
+              gtli[a+4].textContent = ""
+            }else{
+              gtli[a+4].textContent = "●"
+            }
+          }
+          if(a != 8 && a != 5 && a != 2 && a-2 >= 0){
+            if(gtli[a-2].textContent != ""){
+              gtli[a-2].textContent = ""
+            }else{
+              gtli[a-2].textContent = "●"
+            }
+          }
+        }
+
+  </script>
+</body>
+</html>
